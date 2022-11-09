@@ -4,7 +4,7 @@ import ServiceCard from "../Services/ServiceCard";
 const AllServices = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("")
+    fetch("https://service-review-server-iota.vercel.app/services")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
