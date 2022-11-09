@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
 const Header = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const menuItems = (
     <>
       <li>
@@ -15,21 +15,25 @@ const Header = () => {
             <Link>My reviews</Link>
           </li>
           <li>
-            <Link>Add service</Link>
+            <Link to="/add-service">Add service</Link>
           </li>
         </>
       )}
-      <li>
-        <Link to="/login">Log in</Link>
-      </li>
-      {user?.email && (
+
+      {user?.email ? (
         <li>
-          <Link>Log out</Link>
+          <button onClick={logOut}>Log out</button>
         </li>
+      ) : (
+        <>
+          <li>
+            <Link to="/login">Log in</Link>
+          </li>
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
+        </>
       )}
-      <li>
-        <Link to="/register">Register</Link>
-      </li>
     </>
   );
   return (

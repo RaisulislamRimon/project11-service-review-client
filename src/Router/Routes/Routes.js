@@ -1,6 +1,7 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
+import AddService from "../../Pages/AddService/AddService";
 import AllServices from "../../Pages/AllServices/AllServices";
 import Home from "../../Pages/Home/Home/Home";
 import NotFound from "../../Pages/NotFound/NotFound";
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
           fetch(
             `https://service-review-server-iota.vercel.app/services/${params.id}`
           ),
+      },
+      {
+        path: "/add-service",
+        element: <AddService />,
       },
       {
         path: "/login",
