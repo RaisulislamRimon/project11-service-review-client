@@ -1,26 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
 const Header = () => {
+  const { user, logout } = useContext(AuthContext);
   const menuItems = (
     <>
       <li>
-        <Link>Add meeting</Link>
+        <Link>Get Appointment</Link>
       </li>
-      <li>
-        <Link>My reviews</Link>
-      </li>
-      <li>
-        <Link>Add service</Link>
-      </li>
+      {user?.email && (
+        <>
+          <li>
+            <Link>My reviews</Link>
+          </li>
+          <li>
+            <Link>Add service</Link>
+          </li>
+        </>
+      )}
       <li>
         <Link to="/login">Log in</Link>
       </li>
+      {user?.email && (
+        <li>
+          <Link>Log out</Link>
+        </li>
+      )}
       <li>
-        <Link>Log out</Link>
-      </li>
-      <li>
-        <Link to='/register'>Register</Link>
+        <Link to="/register">Register</Link>
       </li>
     </>
   );
@@ -55,7 +63,7 @@ const Header = () => {
           Doctor Portal
         </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
       {/* <div className="navbar-end">
