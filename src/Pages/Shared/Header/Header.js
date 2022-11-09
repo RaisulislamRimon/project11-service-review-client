@@ -14,7 +14,7 @@ const Header = () => {
         <Link>Add service</Link>
       </li>
       <li>
-        <Link>Log in</Link>
+        <Link to="/login">Log in</Link>
       </li>
       <li>
         <Link>Log out</Link>
