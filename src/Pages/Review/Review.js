@@ -15,16 +15,18 @@ const Review = () => {
           write a review
         </h1>
       </div>
-      <div className="w-2/4 mx-auto text-center">
-        <Link to="/login">
-          <button className="lg:text-lg btn btn-warning hover:text-white">
-            Please login to post a review
-          </button>
-        </Link>
-      </div>
-      {user?.email && (
+
+      {user?.email ? (
         <div>
           <ReviewForm />
+        </div>
+      ) : (
+        <div className="w-2/4 mx-auto text-center">
+          <Link to="/login">
+            <button className="lg:text-lg btn btn-warning hover:text-white">
+              Please login to post a review
+            </button>
+          </Link>
         </div>
       )}
       <AllReview />

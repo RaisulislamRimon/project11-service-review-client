@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const ReviewForm = () => {
@@ -9,22 +10,37 @@ const ReviewForm = () => {
     e.preventDefault();
     const form = e.target;
     const review = form.review.value;
-    // const email = user?.email;
-    // const newReview = { review, email };
-    setReview(review);
+    const email = user?.email;
+    const photoURL = user?.photoURL;
+    const newReview = { review, email, photoURL };
+    // setReview(newReview);
+    console.log(newReview);
 
-    fetch(`https://service-review-server-iota.vercel.app/services`, {
+    // fetch(`https://service-review-server-iota.vercel.app/services`, {
+    fetch(`http://localhost:5000/add-review`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(review),
+      body: JSON.stringify(newReview),
     })
       .then((res) => res.json())
       .then((data) => {
+        if (data.acknowledged) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "New review added successfully",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+          form.reset();
+        }
         console.log(data);
+        setReview(data);
       });
   };
+
   return (
     <div className="my-10">
       <form onSubmit={handleAddReview}>

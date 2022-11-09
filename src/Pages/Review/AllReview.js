@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const AllReview = () => {
+  const [AllReview, setAllReview] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/reviews")
+      .then((res) => res.json())
+      .then((data) => setAllReview(data));
+  }, [AllReview]);
+
   return (
     <div className="my-10">
       <div className="overflow-x-auto w-full">
@@ -12,30 +20,23 @@ const AllReview = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <div className="flex items-center space-x-3">
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src="/tailwind-css-component-profile-2@56w.png"
-                        alt="Avatar"
-                      />
+            {AllReview.map((review) => (
+              <tr key={review._id}>
+                <td>
+                  <div className="flex items-center space-x-3">
+                    <div className="avatar">
+                      <div className="mask mask-squircle w-12 h-12">
+                        <img src={review?.photoURL} alt="Avatar" />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="font-bold">{review.email}</div>
                     </div>
                   </div>
-                  <div>
-                    <div className="font-bold">Hart Hagerty</div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                review text message Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Accusantium aut voluptates iste dolor
-                reiciendis vero vitae itaque adipisci molestiae excepturi.
-                Veniam est laboriosam maxime, ullam consequuntur sunt voluptatem
-                alias soluta.
-              </td>
-            </tr>
+                </td>
+                <td>{review.review}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
