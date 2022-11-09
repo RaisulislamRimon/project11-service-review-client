@@ -25,7 +25,6 @@ const SingleService = () => {
         </div>
       </div>
       <div>
-        <h1 className="text-5xl font-bold">Reviews</h1>
         <Review />
       </div>
     </div>
