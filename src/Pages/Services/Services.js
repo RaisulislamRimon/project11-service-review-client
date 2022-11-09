@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import ServiceCard from "./ServiceCard";
 
 const Services = () => {
@@ -15,7 +16,7 @@ const Services = () => {
     <div>
       <div>
         <h1 className="text-4xl font-bold text-center">Services</h1>
-        <p className="w-3/4 mx-auto text-center mt-5 text-lg font-semibold">
+        <p className="w-3/4 mx-auto text-center mt-5 text-md">
           We focus on helping you build a better healthier body. An efficient
           health care system can contribute to a significant part of a country's
           economy, development, and industrialization. Health care is
@@ -30,6 +31,13 @@ const Services = () => {
             <ServiceCard key={service.id} service={service} />
           ))}
         </div>
+      </div>
+      <div className="w-56 mx-auto text-center my-20">
+        <Link to="/services">
+          <button className="btn btn-active btn-accent text-white  ">
+            See all
+          </button>
+        </Link>
       </div>
     </div>
   );
