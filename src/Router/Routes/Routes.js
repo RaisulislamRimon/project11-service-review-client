@@ -8,6 +8,7 @@ import NotFound from "../../Pages/NotFound/NotFound";
 import Login from "../../Pages/Shared/Login/Login";
 import Register from "../../Pages/Shared/Register/Register";
 import SingleService from "../../Pages/SingleService/SingleService";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-service",
-        element: <AddService />,
+        element: (
+          <PrivateRoute>
+            <AddService />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
