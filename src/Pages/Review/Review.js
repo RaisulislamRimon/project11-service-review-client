@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AllReview from "./AllReview";
+import ReviewForm from "./ReviewForm";
 
 const Review = () => {
   return (
@@ -18,6 +19,9 @@ const Review = () => {
             Please login to post a review
           </button>
         </Link>
+      </div>
+      <div>
+        <ReviewForm />
       </div>
       <AllReview />
     </div>
