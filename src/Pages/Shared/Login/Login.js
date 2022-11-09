@@ -123,7 +123,7 @@ const Login = () => {
 
             <div className="mx-auto mb-4">
               <p className="">Or, Sign in with Google</p>
-              <div className="text-2xl m-5 text-center">
+              <div className="flex justify-around text-2xl m-5 text-center">
                 <FaGoogle
                   onClick={handleGoogleSignIn}
                   className="hover:cursor-pointer"

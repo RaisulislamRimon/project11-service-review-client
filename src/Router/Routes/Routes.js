@@ -5,6 +5,7 @@ import AllServices from "../../Pages/AllServices/AllServices";
 import Home from "../../Pages/Home/Home/Home";
 import NotFound from "../../Pages/NotFound/NotFound";
 import Login from "../../Pages/Shared/Login/Login";
+import Register from "../../Pages/Shared/Register/Register";
 import SingleService from "../../Pages/SingleService/SingleService";
 
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
       {
         path: "*",

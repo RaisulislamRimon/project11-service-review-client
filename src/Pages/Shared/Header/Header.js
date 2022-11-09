@@ -20,7 +20,7 @@ const Header = () => {
         <Link>Log out</Link>
       </li>
       <li>
-        <Link>Register</Link>
+        <Link to='/register'>Register</Link>
       </li>
     </>
   );
