@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import AllReview from "./AllReview";
 import ReviewForm from "./ReviewForm";
 
 const Review = () => {
+  const { user } = useContext(AuthContext);
   return (
     <div className="mb-20">
       <div className="text-center mb-10">
@@ -20,9 +22,11 @@ const Review = () => {
           </button>
         </Link>
       </div>
-      <div>
-        <ReviewForm />
-      </div>
+      {user?.email && (
+        <div>
+          <ReviewForm />
+        </div>
+      )}
       <AllReview />
     </div>
   );

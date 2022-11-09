@@ -25,11 +25,12 @@ const router = createBrowserRouter([
         element: <AllServices />,
       },
       {
-        path: "/services/:id",
+        path: "/services/:_id",
         element: <SingleService />,
         loader: ({ params }) =>
           fetch(
-            `https://service-review-server-iota.vercel.app/services/${params.id}`
+            // `https://service-review-server-iota.vercel.app/services/${params._id}`
+            `http://localhost:5000/services/${params._id}`
           ),
       },
       {

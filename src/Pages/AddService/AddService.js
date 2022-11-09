@@ -1,6 +1,42 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const AddService = () => {
+  const [addService, setAddService] = useState([]);
+  const { user } = useContext(AuthContext);
+
+  const handleAddServiceData = (e) => {
+    const newService = { ...addService, email: user?.email };
+    newService[e.target.name] = e.target.value;
+    setAddService(newService);
+    console.log(addService);
+  };
+
+  const handleAddService = (e) => {
+    e.preventDefault();
+    // fetch(`https://service-review-server-iota.vercel.app/add-service`, {
+    fetch(`http://localhost:5000/add-service`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(addService),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "New service added successfully",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+          e.target.reset();
+        }
+      });
+  };
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -13,13 +49,15 @@ const AddService = () => {
             </p>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <div className="card-body">
+            <form onSubmit={handleAddService} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Service Title</span>
                 </label>
                 <input
+                  onChange={handleAddServiceData}
                   type="text"
+                  name="title"
                   placeholder="service title"
                   className="input input-bordered"
                 />
@@ -29,7 +67,9 @@ const AddService = () => {
                   <span className="label-text">Description</span>
                 </label>
                 <input
+                  onChange={handleAddServiceData}
                   type="text"
+                  name="description"
                   placeholder="service description"
                   className="input input-bordered"
                 />
@@ -39,7 +79,9 @@ const AddService = () => {
                   <span className="label-text">Image</span>
                 </label>
                 <input
+                  onChange={handleAddServiceData}
                   type="text"
+                  name="img"
                   placeholder="image link"
                   className="input input-bordered"
                 />
@@ -49,7 +91,9 @@ const AddService = () => {
                   <span className="label-text">Price</span>
                 </label>
                 <input
+                  onChange={handleAddServiceData}
                   type="text"
+                  name="price"
                   placeholder="price"
                   className="input input-bordered"
                 />
@@ -57,7 +101,7 @@ const AddService = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Add Service</button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

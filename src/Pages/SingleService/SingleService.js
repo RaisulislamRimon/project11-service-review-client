@@ -4,8 +4,7 @@ import Review from "../Review/Review";
 
 const SingleService = () => {
   const data = useLoaderData();
-  const { id, name, description, price, img } = data;
-  console.log(description);
+  const { _id, name, description, price, img } = data;
 
   return (
     <div>
