@@ -16,7 +16,7 @@ const Services = () => {
     <div>
       <div>
         <h1 className="text-4xl font-bold text-center">Services</h1>
-        <p className="w-3/4 mx-auto text-center mt-5 text-md">
+        <p className="w-3/4 mx-auto text-center mt-5 text-md mb-10">
           We focus on helping you build a better healthier body. An efficient
           health care system can contribute to a significant part of a country's
           economy, development, and industrialization. Health care is

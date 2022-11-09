@@ -19,8 +19,11 @@ const ServiceCard = ({ service }) => {
               ? descCapital.slice(0, 100) + "..."
               : descCapital}
           </p>
+
+          <p className="text-xl font-bold my-2">Price : ${price}</p>
+
           <div className="card-actions">
-            <button className="btn btn-primary">Buy Now</button>
+            <button className="btn btn-info">See Details</button>
           </div>
         </div>
       </div>
