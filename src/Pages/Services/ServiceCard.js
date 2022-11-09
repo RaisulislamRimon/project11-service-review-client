@@ -1,14 +1,21 @@
 import React from "react";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 const ServiceCard = ({ service }) => {
   const { id, name, price, description, img } = service;
   const descCapital =
     description.charAt(0).toUpperCase() + description.slice(1);
+
   return (
     <div>
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure className="px-10 pt-10">
-          <img src={img} alt="Shoes" className="rounded-xl h-60" />
+          <PhotoProvider>
+            <PhotoView src={img}>
+              <img src={img} alt="Shoes" className="rounded-xl h-60" />
+            </PhotoView>
+          </PhotoProvider>
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title">
