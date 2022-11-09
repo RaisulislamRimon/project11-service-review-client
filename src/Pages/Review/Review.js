@@ -1,4 +1,5 @@
 import React from "react";
+import AllReview from "./AllReview";
 
 const Review = () => {
   return (
@@ -12,6 +13,7 @@ const Review = () => {
           Please login to write a review
         </button>
       </div>
+      <AllReview />
     </div>
   );
 };
