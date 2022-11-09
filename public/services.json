@@ -4,7 +4,7 @@
     "name": "dental cleanings",
     "price": 100,
     "description": "cleaning teeth and gums to prevent cavities and gum disease and bad breath and tooth loss and other dental problems and diseases",
-    "img": "https://images.pexels.com/photos/3845746/pexels-photo-3845746.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    "img": "https://images.pexels.com/photos/3881439/pexels-photo-3881439.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   },
   {
     "id": 2,
@@ -17,7 +17,8 @@
     "id": 3,
     "name": "fillings",
     "price": 200,
-    "description": "filling cavities in teeth to prevent tooth loss and other dental problems and diseases"
+    "description": "filling cavities in teeth to prevent tooth loss and other dental problems and diseases",
+    "img": "https://images.pexels.com/photos/3845766/pexels-photo-3845766.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   },
   {
     "id": 4,
