@@ -4,6 +4,7 @@ import Main from "../../Layout/Main";
 import AllServices from "../../Pages/AllServices/AllServices";
 import Home from "../../Pages/Home/Home/Home";
 import NotFound from "../../Pages/NotFound/NotFound";
+import SingleService from "../../Pages/SingleService/SingleService";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,14 @@ const router = createBrowserRouter([
       {
         path: "/services",
         element: <AllServices />,
+      },
+      {
+        path: "/services/:id",
+        element: <SingleService />,
+        loader: ({ params }) =>
+          fetch(
+            `https://service-review-server-iota.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "*",
