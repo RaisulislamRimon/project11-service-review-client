@@ -1,13 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const AllReview = () => {
-  const [AllReview, setAllReview] = useState([]);
+  const [allReview, setAllReview] = useState([]);
+  const { user } = useContext(AuthContext);
+  const { _id } = useParams();
 
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch(`http://localhost:5000/reviews/${_id}`)
       .then((res) => res.json())
-      .then((data) => setAllReview(data));
-  }, [AllReview]);
+      .then((data) => {
+        console.log(data);
+        setAllReview(data);
+      });
+  }, [ _id ]);
 
   return (
     <div className="my-10">
@@ -20,7 +27,7 @@ const AllReview = () => {
             </tr>
           </thead>
           <tbody>
-            {AllReview.map((review) => (
+            {allReview.map((review) => (
               <tr key={review._id}>
                 <td>
                   <div className="flex items-center space-x-3">

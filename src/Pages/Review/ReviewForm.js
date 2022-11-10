@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
@@ -6,15 +7,18 @@ const ReviewForm = () => {
   const [review, setReview] = useState([]);
   const { user } = useContext(AuthContext);
 
+  const { _id } = useParams();
+
   const handleAddReview = (e) => {
     e.preventDefault();
     const form = e.target;
     const review = form.review.value;
     const email = user?.email;
     const photoURL = user?.photoURL;
-    const newReview = { review, email, photoURL };
-    // setReview(newReview);
-    console.log(newReview);
+    const serviceId = _id;
+    const newReview = { review, email, photoURL, serviceId };
+    setReview(newReview);
+    console.log(review);
 
     // fetch(`https://service-review-server-iota.vercel.app/services`, {
     fetch(`http://localhost:5000/add-review`, {
