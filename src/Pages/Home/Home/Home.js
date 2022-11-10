@@ -1,6 +1,7 @@
 import React from "react";
 import Services from "../../Services/Services";
 import Banner from "../Banner/Banner";
+import Carousel from "../Carousel/Carousel";
 import Countdown from "../Countdown/Countdown";
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
       <Banner />
       <Services />
       <Countdown />
+      <Carousel />
     </div>
   );
 };
