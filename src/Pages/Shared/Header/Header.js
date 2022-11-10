@@ -9,6 +9,9 @@ const Header = () => {
       <li>
         <Link>Get Appointment</Link>
       </li>
+      <li>
+        <Link to="/blog">Blog</Link>
+      </li>
       {user?.email && (
         <>
           <li>
