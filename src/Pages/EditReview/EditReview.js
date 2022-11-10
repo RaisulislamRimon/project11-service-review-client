@@ -8,8 +8,12 @@ const EditReview = () => {
 
   const handleUpdateReview = (e) => {
     e.preventDefault();
-    console.log(data, id);
-    
+    console.log(data);
+    const updatedReview = {
+      review: e.target.review.value,
+    };
+    console.log(updatedReview);
+    setReview(updatedReview);
 
     fetch(`http://localhost:5000/get-review/${id}`, {
       method: "PUT",
@@ -20,7 +24,7 @@ const EditReview = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log(review);
       });
   };
   return (
@@ -36,7 +40,7 @@ const EditReview = () => {
               <span className="label-text">Update Your Review : </span>
             </label>
             <textarea
-              name="updateReview"
+              name="review"
               className="textarea textarea-bordered h-24"
               placeholder="type to update your review"
             ></textarea>
