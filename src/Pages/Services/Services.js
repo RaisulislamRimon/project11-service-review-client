@@ -6,7 +6,7 @@ const Services = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
     // fetch("https://service-review-server-iota.vercel.app/services")
-    fetch("http://localhost:5000/services")
+    fetch("http://localhost:5000/services-limit")
       .then((res) => res.json())
       .then((data) => {
         setServices(data);
