@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import ServiceCard from "../Services/ServiceCard";
 
 const AllServices = () => {
   const [services, setServices] = useState([]);
+  const { loading, setLoading } = useContext(AuthContext);
   useEffect(() => {
-    // fetch("https://service-review-server-iota.vercel.app/services")
-    fetch("http://localhost:5000/services")
+    setLoading(true);
+
+    fetch("https://service-review-server-iota.vercel.app/services")
       .then((res) => res.json())
       .then((data) => {
+        setLoading(false);
         setServices(data);
       });
-  }, []);
+  }, [setLoading]);
   return (
     <div className="my-20">
       <div>

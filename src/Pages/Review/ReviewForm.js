@@ -13,7 +13,7 @@ const ReviewForm = () => {
 
   // collect service name from service id
   useEffect(() => {
-    fetch(`http://localhost:5000/services/${_id}`)
+    fetch(`https://service-review-server-iota.vercel.app/services/${_id}`)
       .then((res) => res.json())
       .then((data) => {
         const serviceName = data.name;
@@ -41,7 +41,7 @@ const ReviewForm = () => {
     setReview(newReview);
 
     // fetch(`https://service-review-server-iota.vercel.app/services`, {
-    fetch(`http://localhost:5000/add-review`, {
+    fetch(`https://service-review-server-iota.vercel.app/add-review`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

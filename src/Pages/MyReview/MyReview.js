@@ -8,7 +8,10 @@ const MyReview = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch("http://localhost:5000/my-reviews?email=" + user?.email)
+    fetch(
+      "https://service-review-server-iota.vercel.app/my-reviews?email=" +
+        user?.email
+    )
       .then((res) => res.json())
       .then((data) => {
         setMyReviews(data);
