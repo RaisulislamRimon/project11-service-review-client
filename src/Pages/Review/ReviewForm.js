@@ -13,6 +13,7 @@ const ReviewForm = () => {
 
   // collect service name from service id
   useEffect(() => {
+    // fetch(`https://service-review-server-iota.vercel.app/services/${_id}`)
     fetch(`http://localhost:5000/services/${_id}`)
       .then((res) => res.json())
       .then((data) => {
@@ -31,6 +32,7 @@ const ReviewForm = () => {
     const serviceId = _id;
 
     const serviceNameCollect = serviceName;
+
     const newReview = {
       review,
       email,
@@ -38,9 +40,8 @@ const ReviewForm = () => {
       serviceId,
       serviceNameCollect,
     };
-    setReview(newReview);
 
-    // fetch(`http://localhost:5000/services`, {
+    // fetch(`https://service-review-server-iota.vercel.app/services`, {
     fetch(`http://localhost:5000/add-review`, {
       method: "POST",
       headers: {
@@ -52,7 +53,7 @@ const ReviewForm = () => {
       .then((data) => {
         if (data.acknowledged) {
           setLoading(false);
-          setReview(data);
+          setReview(newReview);
           Swal.fire({
             position: "center",
             icon: "success",
