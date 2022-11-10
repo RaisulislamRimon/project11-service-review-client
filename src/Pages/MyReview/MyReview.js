@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const MyReview = () => {
@@ -20,22 +21,24 @@ const MyReview = () => {
           My Review : {myReviews.length}{" "}
         </h1>
       </div>
-      {myReviews.map((myRreview) => (
+      {myReviews.map((myReview) => (
         <div
-          key={myRreview._id}
+          key={myReview._id}
           className="card w-full border border-primary my-10"
         >
           <div className="card-body items-center text-center">
             <h2 className="card-title">
-              Service Name : {myRreview?.serviceNameCollect}
+              Service Name : {myReview?.serviceNameCollect}
             </h2>
             <p>
-              <strong>Review : {myRreview?.review} </strong>
+              <strong>Review : {myReview?.review} </strong>
             </p>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary">
-                <FaEdit className="mr-2" /> Edit
-              </button>
+              <Link to={`/update/${myReview._id}`}>
+                <button className="btn btn-primary">
+                  <FaEdit className="mr-2" /> Edit
+                </button>
+              </Link>
               <button className="btn btn-warning">
                 <FaTrashAlt className="mr-2" /> Delete
               </button>
