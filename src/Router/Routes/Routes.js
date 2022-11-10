@@ -53,6 +53,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/update/:id",
+        // path: "/update",
         element: (
           <PrivateRoute>
             <EditReview />

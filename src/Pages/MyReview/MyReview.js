@@ -35,9 +35,12 @@ const MyReview = () => {
             </p>
             <div className="card-actions justify-end">
               <Link to={`/update/${myReview._id}`}>
-                <button className="btn btn-primary">
-                  <FaEdit className="mr-2" /> Edit
-                </button>
+                {/* <Link to="/update"> */}
+                <div>
+                  <button className="btn btn-primary">
+                    <FaEdit className="mr-2" /> Edit
+                  </button>
+                </div>
               </Link>
               <button className="btn btn-warning">
                 <FaTrashAlt className="mr-2" /> Delete

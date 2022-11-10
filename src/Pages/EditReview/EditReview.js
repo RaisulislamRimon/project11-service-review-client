@@ -1,30 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const EditReview = () => {
   const data = useLoaderData();
   const { id } = useParams();
-  const [review, setReview] = useState(data);
+  // const [review, setReview] = useState(data);
 
   const handleUpdateReview = (e) => {
     e.preventDefault();
-    console.log(data);
+    const review = e.target.review.value;
+
     const updatedReview = {
       review: e.target.review.value,
     };
-    console.log(updatedReview);
-    setReview(updatedReview);
 
     fetch(`http://localhost:5000/get-review/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(review),
+      body: JSON.stringify(updatedReview),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(review);
+        if (data.acknowledged) {
+          Swal.fire({
+            icon: "success",
+            title: "Review Updated Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          e.target.reset();
+        }
       });
   };
   return (

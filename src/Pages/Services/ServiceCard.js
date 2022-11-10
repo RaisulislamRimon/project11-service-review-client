@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 const ServiceCard = ({ service }) => {
   const { _id, name, price, description, img } = service;
-  const descCapital =
-    description.charAt(0).toUpperCase() + description.slice(1);
+  const descCapital = description;
+  // description.charAt(0).toUpperCase() + description.slice(1);
 
   return (
     <div>
