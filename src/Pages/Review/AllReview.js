@@ -11,7 +11,6 @@ const AllReview = () => {
     fetch(`http://localhost:5000/reviews/${_id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setAllReview(data);
       });
   }, [ _id ]);

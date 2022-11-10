@@ -7,7 +7,6 @@ const AllServices = () => {
     fetch("https://service-review-server-iota.vercel.app/services")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setServices(data);
       });
   }, []);

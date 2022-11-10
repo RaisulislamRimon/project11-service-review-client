@@ -10,7 +10,6 @@ const AddService = () => {
     const newService = { ...addService, email: user?.email };
     newService[e.target.name] = e.target.value;
     setAddService(newService);
-    console.log(addService);
   };
 
   const handleAddService = (e) => {

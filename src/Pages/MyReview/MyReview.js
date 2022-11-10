@@ -7,13 +7,12 @@ const MyReview = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch("http://localhost:5000/my-reviews?email=" + user.email)
+    fetch("http://localhost:5000/my-reviews?email=" + user?.email)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setMyReviews(data);
       });
-  }, [user.email]);
+  }, [user?.email]);
   return (
     <div className="my-10 container mx-auto">
       <div>
@@ -27,9 +26,11 @@ const MyReview = () => {
           className="card w-full border border-primary my-10"
         >
           <div className="card-body items-center text-center">
-            <h2 className="card-title">service name</h2>
+            <h2 className="card-title">
+              Service Name : {myRreview?.serviceNameCollect}
+            </h2>
             <p>
-              <strong>Review : {myRreview.review} </strong>
+              <strong>Review : {myRreview?.review} </strong>
             </p>
             <div className="card-actions justify-end">
               <button className="btn btn-primary">

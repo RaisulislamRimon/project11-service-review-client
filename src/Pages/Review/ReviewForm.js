@@ -5,20 +5,38 @@ import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const ReviewForm = () => {
   const [review, setReview] = useState([]);
-  const { user } = useContext(AuthContext);
+  const [serviceName, setServiceName] = useState("");
+  const { user, loading, setLoading } = useContext(AuthContext);
 
   const { _id } = useParams();
+  // getting service name from state
+
+  // collect service name from service id
+  fetch(`http://localhost:5000/services/${_id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      const serviceName = data.name;
+      setServiceName(serviceName);
+    });
 
   const handleAddReview = (e) => {
+    setLoading(true);
     e.preventDefault();
     const form = e.target;
     const review = form.review.value;
     const email = user?.email;
     const photoURL = user?.photoURL;
     const serviceId = _id;
-    const newReview = { review, email, photoURL, serviceId };
+
+    const serviceNameCollect = serviceName;
+    const newReview = {
+      review,
+      email,
+      photoURL,
+      serviceId,
+      serviceNameCollect,
+    };
     setReview(newReview);
-    console.log(review);
 
     // fetch(`https://service-review-server-iota.vercel.app/services`, {
     fetch(`http://localhost:5000/add-review`, {
@@ -31,6 +49,7 @@ const ReviewForm = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
+          setLoading(false);
           Swal.fire({
             position: "center",
             icon: "success",
@@ -40,7 +59,6 @@ const ReviewForm = () => {
           });
           form.reset();
         }
-        console.log(data);
         setReview(data);
       });
   };
