@@ -13,7 +13,7 @@ const AllReview = () => {
       .then((data) => {
         setAllReview(data);
       });
-  }, [ _id ]);
+  }, [_id, setAllReview]);
 
   return (
     <div className="my-10">

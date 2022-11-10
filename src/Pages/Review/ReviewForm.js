@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
@@ -12,12 +12,14 @@ const ReviewForm = () => {
   // getting service name from state
 
   // collect service name from service id
-  fetch(`http://localhost:5000/services/${_id}`)
-    .then((res) => res.json())
-    .then((data) => {
-      const serviceName = data.name;
-      setServiceName(serviceName);
-    });
+  useEffect(() => {
+    fetch(`http://localhost:5000/services/${_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        const serviceName = data.name;
+        setServiceName(serviceName);
+      });
+  }, [_id, setServiceName]);
 
   const handleAddReview = (e) => {
     setLoading(true);
@@ -50,6 +52,7 @@ const ReviewForm = () => {
       .then((data) => {
         if (data.acknowledged) {
           setLoading(false);
+          setReview(data);
           Swal.fire({
             position: "center",
             icon: "success",
@@ -59,7 +62,6 @@ const ReviewForm = () => {
           });
           form.reset();
         }
-        setReview(data);
       });
   };
 
