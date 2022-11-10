@@ -17,10 +17,15 @@ const MyReview = () => {
   return (
     <div className="my-10 container mx-auto">
       <div>
-        <h1 className="text-5xl text-center">
-          My Review : {myReviews.length}{" "}
-        </h1>
+        <h1 className="text-5xl text-center">My Reviews</h1>
       </div>
+      {myReviews.length === 0 && (
+        <div>
+          <h2 className="text-3xl text-center my-52">
+            No reviews were added yet.
+          </h2>
+        </div>
+      )}
       {myReviews.map((myReview) => (
         <div
           key={myReview._id}
