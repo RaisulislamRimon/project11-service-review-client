@@ -8,7 +8,7 @@ const AllServices = () => {
   useEffect(() => {
     setLoading(true);
 
-    fetch("https://service-review-server-iota.vercel.app/services")
+    fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);

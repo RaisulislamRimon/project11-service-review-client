@@ -15,7 +15,7 @@ const EditReview = () => {
       review: e.target.review.value,
     };
 
-    fetch(`https://service-review-server-iota.vercel.app/get-review/${id}`, {
+    fetch(`http://localhost:5000/get-review/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

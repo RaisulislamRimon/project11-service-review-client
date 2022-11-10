@@ -8,7 +8,7 @@ const AllReview = () => {
   const { _id } = useParams();
 
   useEffect(() => {
-    fetch(`https://service-review-server-iota.vercel.app/reviews/${_id}`)
+    fetch(`http://localhost:5000/reviews/${_id}`)
       .then((res) => res.json())
       .then((data) => {
         setAllReview(data);

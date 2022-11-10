@@ -8,10 +8,7 @@ const MyReview = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(
-      "https://service-review-server-iota.vercel.app/my-reviews?email=" +
-        user?.email
-    )
+    fetch("http://localhost:5000/my-reviews?email=" + user?.email)
       .then((res) => res.json())
       .then((data) => {
         setMyReviews(data);
@@ -50,7 +47,25 @@ const MyReview = () => {
                   </button>
                 </div>
               </Link>
-              <button className="btn btn-warning">
+              <button
+                onClick={() => {
+                  fetch(`http://localhost:5000/reviews/${myReview._id}`, {
+                    method: "DELETE",
+                  })
+                    .then((res) => res.json())
+                    .then((result) => {
+
+                      if (result) {
+                        const remainingReviews = myReviews.filter(
+                          (review) => review._id !== myReview._id
+                        );
+                        setMyReviews(remainingReviews);
+                        alert("Review deleted successfully");
+                      }
+                    });
+                }}
+                className="btn btn-warning"
+              >
                 <FaTrashAlt className="mr-2" /> Delete
               </button>
             </div>

@@ -35,9 +35,7 @@ const router = createBrowserRouter([
         path: "/services/:_id",
         element: <SingleService />,
         loader: ({ params }) =>
-          fetch(
-            `https://service-review-server-iota.vercel.app/services/${params._id}`
-          ),
+          fetch(`http://localhost:5000/services/${params._id}`),
       },
       {
         path: "/add-service",
@@ -64,9 +62,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://service-review-server-iota.vercel.app/reviews/${params.id}`
-          ),
+          fetch(`http://localhost:5000/reviews/${params.id}`),
       },
       {
         path: "/login",
