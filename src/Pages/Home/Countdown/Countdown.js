@@ -14,25 +14,25 @@ const Countdown = () => {
             <span className="countdown font-mono text-5xl">
               <span style={{ "--value": 15 }}></span>
             </span>
-            days
+            Years
           </div>
           <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
             <span className="countdown font-mono text-5xl">
               <span style={{ "--value": 10 }}></span>
             </span>
-            hours
+            Months
           </div>
           <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
             <span className="countdown font-mono text-5xl">
               <span style={{ "--value": 24 }}></span>
             </span>
-            min
+            Weeks
           </div>
           <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
             <span className="countdown font-mono text-5xl">
               <span style={{ "--value": 30 }}></span>
             </span>
-            sec
+            Days
           </div>
         </div>
       </>
