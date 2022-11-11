@@ -54,8 +54,24 @@ const Login = () => {
           showConfirmButton: false,
           timer: 2000,
         });
+        const currentUser = {
+          email: result.user.email,
+        };
         form.reset();
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            localStorage.setItem("life-care", data.token);
+            navigate(from, { replace: true });
+          });
       })
       .catch((error) => {
         Swal.fire({
