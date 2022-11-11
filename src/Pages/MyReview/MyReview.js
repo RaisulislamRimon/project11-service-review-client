@@ -11,7 +11,8 @@ const MyReview = () => {
 
   useEffect(() => {
     fetch(
-      `https://service-review-server-pink-omega.vercel.app/my-reviews?email=${user?.email}`,
+      // `https://service-review-server-pink-omega.vercel.app/my-reviews?email=${user?.email}`,
+      `http://localhost:5000/my-reviews?email=${user?.email}`,
       {
         headers: {
           authorization: `Bearer ${localStorage.getItem("life-care")}`,
