@@ -7,15 +7,26 @@ import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const MyReview = () => {
   const [myReviews, setMyReviews] = React.useState([]);
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch("http://localhost:5000/my-reviews?email=" + user?.email)
-      .then((res) => res.json())
+    fetch(`http://localhost:5000/my-reviews?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("life-care")}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          return logOut();
+        }
+
+        return res.json();
+      })
       .then((data) => {
+        // console.log(data);
         setMyReviews(data);
       });
-  }, [user?.email]);
+  }, [user?.email, logOut]);
   return (
     <div className="my-10 container mx-auto">
       <Helmet>

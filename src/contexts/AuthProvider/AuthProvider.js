@@ -39,6 +39,7 @@ const AuthProvider = ({ children }) => {
 
   const logOut = () => {
     setLoading(true);
+    localStorage.removeItem('life-care')
     return signOut(auth);
   };
 

@@ -68,7 +68,7 @@ const Login = () => {
         })
           .then((response) => response.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             localStorage.setItem("life-care", data.token);
             navigate(from, { replace: true });
           });
