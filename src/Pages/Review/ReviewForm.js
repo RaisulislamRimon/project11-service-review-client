@@ -29,12 +29,14 @@ const ReviewForm = () => {
     const review = form.review.value;
     const email = user?.email;
     const photoURL = user?.photoURL;
+    const name = user?.displayName;
     const serviceId = _id;
 
     const serviceNameCollect = serviceName;
 
     const newReview = {
       review,
+      name,
       email,
       photoURL,
       serviceId,

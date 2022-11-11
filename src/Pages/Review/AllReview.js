@@ -12,8 +12,10 @@ const AllReview = () => {
       .then((res) => res.json())
       .then((data) => {
         setAllReview(data);
+        console.log(data);
       });
-  }, [_id, setAllReview]);
+  }, [_id, user?.email]);
+  // }, [_id, setAllReview]);
 
   return (
     <div className="my-10">
@@ -36,7 +38,7 @@ const AllReview = () => {
                       </div>
                     </div>
                     <div>
-                      <div className="font-bold">{review.email}</div>
+                      <div className="font-bold">{review.name}</div>
                     </div>
                   </div>
                 </td>
