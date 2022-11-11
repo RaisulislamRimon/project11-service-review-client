@@ -15,8 +15,8 @@ const AddService = () => {
 
   const handleAddService = (e) => {
     e.preventDefault();
-    // fetch(`http://localhost:5000/add-service`, {
-    fetch(`http://localhost:5000/add-service`, {
+    // fetch(`https://service-review-server-pink-omega.vercel.app/add-service`, {
+    fetch(`https://service-review-server-pink-omega.vercel.app/add-service`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

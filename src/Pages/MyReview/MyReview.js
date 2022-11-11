@@ -10,11 +10,14 @@ const MyReview = () => {
   const { user, logOut } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/my-reviews?email=${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("life-care")}`,
-      },
-    })
+    fetch(
+      `https://service-review-server-pink-omega.vercel.app/my-reviews?email=${user?.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("life-care")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           return logOut();
@@ -65,9 +68,12 @@ const MyReview = () => {
               </Link>
               <button
                 onClick={() => {
-                  fetch(`http://localhost:5000/reviews/${myReview._id}`, {
-                    method: "DELETE",
-                  })
+                  fetch(
+                    `https://service-review-server-pink-omega.vercel.app/reviews/${myReview._id}`,
+                    {
+                      method: "DELETE",
+                    }
+                  )
                     .then((res) => res.json())
                     .then((result) => {
                       if (result) {

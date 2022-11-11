@@ -16,13 +16,16 @@ const EditReview = () => {
       review: e.target.review.value,
     };
 
-    fetch(`http://localhost:5000/get-review/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedReview),
-    })
+    fetch(
+      `https://service-review-server-pink-omega.vercel.app/get-review/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedReview),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {

@@ -14,7 +14,7 @@ const ReviewForm = () => {
   // collect service name from service id
   useEffect(() => {
     // fetch(`https://service-review-server-iota.vercel.app/services/${_id}`)
-    fetch(`http://localhost:5000/services/${_id}`)
+    fetch(`https://service-review-server-pink-omega.vercel.app/services/${_id}`)
       .then((res) => res.json())
       .then((data) => {
         const serviceName = data.name;
@@ -30,6 +30,8 @@ const ReviewForm = () => {
     const email = user?.email;
     const photoURL = user?.photoURL;
     const name = user?.displayName;
+    // const postTime = new Date().getTime();
+    const date = new Date().toJSON();
     const serviceId = _id;
 
     const serviceNameCollect = serviceName;
@@ -41,10 +43,11 @@ const ReviewForm = () => {
       photoURL,
       serviceId,
       serviceNameCollect,
+      date,
     };
 
     // fetch(`https://service-review-server-iota.vercel.app/services`, {
-    fetch(`http://localhost:5000/add-review`, {
+    fetch(`https://service-review-server-pink-omega.vercel.app/add-review`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

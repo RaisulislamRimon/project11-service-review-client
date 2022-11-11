@@ -7,7 +7,7 @@ const AllServices = () => {
   const [services, setServices] = useState([]);
   const { loading, setLoading } = useContext(AuthContext);
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://service-review-server-pink-omega.vercel.app/services")
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);

@@ -39,7 +39,9 @@ const router = createBrowserRouter([
         path: "/services/:_id",
         element: <SingleService />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params._id}`),
+          fetch(
+            `https://service-review-server-pink-omega.vercel.app/services/${params._id}`
+          ),
       },
       {
         path: "/add-service",
@@ -66,7 +68,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/reviews/${params.id}`),
+          fetch(
+            `https://service-review-server-pink-omega.vercel.app/reviews/${params.id}`
+          ),
       },
       {
         path: "/login",
