@@ -5,6 +5,7 @@ import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { providerLogin, signIn } = useContext(AuthContext);
@@ -85,6 +86,9 @@ const Login = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Login | Life Care</title>
+      </Helmet>
       <div className="mt-10">
         <h2 className="text-center text-4xl font-bold mb-10">Login</h2>
         <form onSubmit={handleSubmit}>

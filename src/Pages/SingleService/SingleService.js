@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 import Review from "../Review/Review";
 
@@ -8,6 +9,9 @@ const SingleService = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Services | Life Care</title>
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
           <img

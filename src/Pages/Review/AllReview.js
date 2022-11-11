@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
@@ -19,6 +20,9 @@ const AllReview = () => {
 
   return (
     <div className="my-10">
+      <Helmet>
+        <title>All Review | Life Care</title>
+      </Helmet>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           <thead>

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import ServiceCard from "../Services/ServiceCard";
 
@@ -17,6 +18,9 @@ const AllServices = () => {
   }, [setLoading]);
   return (
     <div className="my-20">
+      <Helmet>
+        <title>All Services | Life Care</title>
+      </Helmet>
       <div>
         <h1 className="text-4xl font-bold text-center">All Services</h1>
         <p className="w-3/4 mx-auto text-center mt-5 text-md mb-10">

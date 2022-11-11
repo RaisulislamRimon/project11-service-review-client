@@ -7,7 +7,7 @@ const Header = () => {
   const menuItems = (
     <>
       <li>
-        <Link>Get Appointment</Link>
+        <Link to='/appointment'>Get Appointment</Link>
       </li>
       <li>
         <Link to="/blog">Blog</Link>

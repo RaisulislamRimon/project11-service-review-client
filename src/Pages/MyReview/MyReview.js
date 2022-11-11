@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -17,6 +18,9 @@ const MyReview = () => {
   }, [user?.email]);
   return (
     <div className="my-10 container mx-auto">
+      <Helmet>
+        <title>My Reviews | Life Care</title>
+      </Helmet>
       <div>
         <h1 className="text-5xl text-center">My Reviews</h1>
       </div>

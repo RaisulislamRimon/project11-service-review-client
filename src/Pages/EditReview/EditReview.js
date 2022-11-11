@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useLoaderData, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -37,6 +38,9 @@ const EditReview = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Edit Review | Life Care</title>
+      </Helmet>
       <div className="mt-10 text-center text-2xl">
         <h1>This is Update Review Page where you can edit your review</h1>
       </div>

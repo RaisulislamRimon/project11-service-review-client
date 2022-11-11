@@ -1,5 +1,6 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
+import { Helmet } from "react-helmet";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -93,6 +94,9 @@ const Register = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Register | Life Care</title>
+      </Helmet>
       <h2 className="text-center text-4xl font-bold mb-10">Register</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-control w-full max-w-xs mx-auto mb-10">
