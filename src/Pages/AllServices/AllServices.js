@@ -7,8 +7,6 @@ const AllServices = () => {
   const [services, setServices] = useState([]);
   const { loading, setLoading } = useContext(AuthContext);
   useEffect(() => {
-    setLoading(true);
-
     fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((data) => {
