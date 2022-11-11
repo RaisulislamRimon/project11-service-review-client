@@ -4,7 +4,7 @@
 
 This project is a client side for the service-review-service. It is a simple web application that allows users to add services & submit reviews for services. The client is built using React, React Router Dom, firebase, tailwindcss, daisy ui, react icon, react loader spinner, react photo view & sweet alert2.
 
-## Live website :
+## Live website : https://service-review-6227a.web.app
 
 # Running the client
 
