@@ -20,9 +20,6 @@ const AllReview = () => {
 
   return (
     <div className="my-10">
-      <Helmet>
-        <title>All Review | Life Care</title>
-      </Helmet>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           <thead>

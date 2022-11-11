@@ -10,7 +10,7 @@ const SingleService = () => {
   return (
     <div>
       <Helmet>
-        <title>Services | Life Care</title>
+        <title>Service Details | Life Care</title>
       </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
