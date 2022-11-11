@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const MyReview = () => {
@@ -54,13 +55,18 @@ const MyReview = () => {
                   })
                     .then((res) => res.json())
                     .then((result) => {
-
                       if (result) {
                         const remainingReviews = myReviews.filter(
                           (review) => review._id !== myReview._id
                         );
                         setMyReviews(remainingReviews);
-                        alert("Review deleted successfully");
+                        Swal.fire({
+                          position: "center",
+                          icon: "success",
+                          title: "Your review has been deleted",
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
                       }
                     });
                 }}
