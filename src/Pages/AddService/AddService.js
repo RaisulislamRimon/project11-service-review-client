@@ -63,6 +63,7 @@ const AddService = () => {
                   name="title"
                   placeholder="service title"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -75,6 +76,7 @@ const AddService = () => {
                   name="description"
                   placeholder="service description"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -87,6 +89,7 @@ const AddService = () => {
                   name="img"
                   placeholder="image link"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -99,6 +102,7 @@ const AddService = () => {
                   name="price"
                   placeholder="price"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control mt-6">
