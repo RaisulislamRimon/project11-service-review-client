@@ -68,8 +68,8 @@ const Login = () => {
         })
           .then((response) => response.json())
           .then((data) => {
-            // console.log(data);
-            localStorage.setItem("life-care", data.token);
+            console.log(data);
+            localStorage.setItem("life-care", data?.token);
             navigate(from, { replace: true });
           });
       })
@@ -87,7 +87,25 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
       .then((result) => {
-        navigate(from, { replace: true });
+        if (result?.user?.uid) {
+          const currentUser = {
+            email: result.user.email,
+          };
+          fetch("https://service-review-server-pink-omega.vercel.app/jwt", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(currentUser),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+              localStorage.setItem("life-care", data?.token);
+              navigate(from, { replace: true });
+            });
+        }
+        // navigate(from, { replace: true });
       })
       .catch((error) => {
         Swal.fire({

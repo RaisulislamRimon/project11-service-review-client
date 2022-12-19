@@ -8,6 +8,7 @@ import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 const MyReview = () => {
   const [myReviews, setMyReviews] = React.useState([]);
   const { user, logOut } = useContext(AuthContext);
+  const { loading } = useContext(AuthContext);
 
   useEffect(() => {
     fetch(
@@ -30,7 +31,18 @@ const MyReview = () => {
         // console.log(data);
         setMyReviews(data);
       });
-  }, [user?.email, logOut]);
+  }, [user?.email, logOut, loading]);
+
+  if (loading) {
+    return (
+      <div className="my-10 container mx-auto">
+        <div>
+          <h2 className="text-3xl text-center my-52">Loading...</h2>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="my-10 container mx-auto">
       <Helmet>
