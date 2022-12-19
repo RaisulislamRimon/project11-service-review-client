@@ -1,19 +1,39 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import ServiceCard from "../Services/ServiceCard";
+import Loading from "../Shared/Loading/Loading";
+import LoadingError from "../Shared/Loading/LoadingError";
 
 const AllServices = () => {
-  const [services, setServices] = useState([]);
-  const { loading, setLoading } = useContext(AuthContext);
-  useEffect(() => {
-    fetch("https://service-review-server-pink-omega.vercel.app/services")
-      .then((res) => res.json())
-      .then((data) => {
-        setLoading(false);
-        setServices(data);
-      });
-  }, [setLoading]);
+  // const [services, setServices] = useState([]);
+  // const { loading, setLoading } = useContext(AuthContext);
+  // useEffect(() => {
+  //   fetch("https://service-review-server-pink-omega.vercel.app/services")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setLoading(false);
+  //       setServices(data);
+  //     });
+  // }, [setLoading]);
+
+  const {
+    isLoading,
+    error,
+    data: services = [],
+  } = useQuery({
+    queryKey: ["services"],
+    queryFn: () =>
+      fetch(
+        "https://service-review-server-pink-omega.vercel.app/services"
+      ).then((res) => res.json()),
+  });
+
+  if (isLoading) return <Loading />;
+
+  if (error) return <LoadingError />;
+
   return (
     <div className="my-20">
       <Helmet>

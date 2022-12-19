@@ -1,17 +1,27 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Loading from "../Shared/Loading/Loading";
+import LoadingError from "../Shared/Loading/LoadingError";
 import ServiceCard from "./ServiceCard";
 
 const Services = () => {
-  const [services, setServices] = useState([]);
-  useEffect(() => {
-    // fetch("https://service-review-server-pink-omega.vercel.app/services")
-    fetch("https://service-review-server-pink-omega.vercel.app/services-limit")
-      .then((res) => res.json())
-      .then((data) => {
-        setServices(data);
-      });
-  }, []);
+  const {
+    isLoading,
+    error,
+    data: services = [],
+  } = useQuery({
+    queryKey: ["services"],
+    queryFn: () =>
+      fetch(
+        "https://service-review-server-pink-omega.vercel.app/services-limit"
+      ).then((res) => res.json()),
+  });
+
+  if (isLoading) return <Loading />;
+
+  if (error) return <LoadingError />;
+
   return (
     <div>
       <div>
