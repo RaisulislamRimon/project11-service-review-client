@@ -31,7 +31,7 @@ const Banner = () => {
               delivered by health professionals and allied health fields.
             </p>
             <button className="btn btn-accent hover:text-white">
-              <Link to="/appointment">Get Appointment</Link>
+              <Link to="/services">Get Appointment</Link>
             </button>
           </div>
         </div>
