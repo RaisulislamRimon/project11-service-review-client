@@ -67,6 +67,7 @@ const ReviewForm = () => {
             timer: 3000,
           });
           form.reset();
+          window.location.reload();
         }
       });
   };
